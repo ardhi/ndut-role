@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "teamId": {
+      "type": "Number",
+      "required": true,
+      "scale": 0,
+      "index": true
+    },
+    "userId": {
+      "type": "Number",
+      "required": true,
+      "scale": 0,
+      "index": true
+    }
+  },
+  "feature": {
+    "createdAt": true,
+    "updatedAt": true,
+    "deletedAt": true,
+    "siteId": true
+  }
+}

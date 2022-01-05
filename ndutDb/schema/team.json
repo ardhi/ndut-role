@@ -1,0 +1,21 @@
+{
+  "properties": {
+    "name": {
+      "type": "String",
+      "length": 50,
+      "required": true
+    }
+  },
+  "feature": {
+    "createdAt": true,
+    "updatedAt": true,
+    "deletedAt": true,
+    "siteId": true,
+    "status": true
+  },
+  "override": {
+    "schema": true,
+    "builtinFixture": true
+  },
+  "disableAliasCall": false
+}
