@@ -10,26 +10,32 @@ const mapper = {
 
 module.exports = async function (request, reply) {
   const { _ } = this.ndut.helper
+  const { makeRuleName } = this.ndutRole.helper
   if (!request.user) return
   if (!request.protectedRoute) return
-  const { permissions, rules, team } = await this.ndutRole.helper.getAccessByUser(request.user.id)
-  if (rules.length === 0) throw this.Boom.forbidden('No permission found')
-  const ability = new Ability(rules)
-  const checker = {
-    model: request.params.model,
-    access: permissions
-  }
+  const team = await this.ndutRole.helper.getAccessByUser(request.user.id)
+  const ability = new Ability(this.ndutRole.rules)
+  const checker = { access: team.access }
+  if (request.params.model) checker.model = request.params.model
+
   const methods = _.isString(request.routerMethod) ? [request.routerMethod] : request.routerMethod
+  const sub = subject(request.routerPath, checker)
   let ok = false
+  let ruleName
   _.each(methods, m => {
     const action = mapper[m.toUpperCase()]
-    if (ability.can(action, subject(request.routerPath, checker))) {
+    if (ability.can(action, sub)) {
+      const rule = ability.relevantRuleFor(action, sub)
+      if (rule) {
+        rule.type = 'rest'
+        ruleName = makeRuleName(rule)
+      }
       ok = true
       return false
     }
   })
   if (!ok) throw this.Boom.forbidden('Access denied')
-  team.rules = rules
-  team.permissions = permissions
+  // TODO: what next to the ruleName ???
+  // idea: filter by own records, by teamId, etc
   request.team = team
 }

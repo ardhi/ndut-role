@@ -4,6 +4,9 @@
       "type": "String",
       "length": 50,
       "required": true
+    },
+    "access": {
+      "type": "array"
     }
   },
   "feature": {
