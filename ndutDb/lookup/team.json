@@ -1,0 +1,4 @@
+[
+  { "value": "ENABLED", "column": "status" },
+  { "value": "DISABLED", "column": "status" }
+]
