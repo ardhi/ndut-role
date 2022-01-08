@@ -1,0 +1,6 @@
+{
+  "/team": ["GET", "POST"],
+  "/team/:id": ["GET", "PUT", "DELETE"],
+  "/team-user": ["GET", "POST"],
+  "/team-user/:id": ["GET", "PUT", "DELETE"]
+}
