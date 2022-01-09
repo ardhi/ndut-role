@@ -1,7 +1,7 @@
 [
   {
     "type": "rest",
-    "subject": "/team",
+    "subject": ["/team", "/team-user"],
     "action": ["read", "create"],
     "conditions": {
       "access": { "$in": ["admin"] }
@@ -9,23 +9,7 @@
   },
   {
     "type": "rest",
-    "subject": "/team/:id",
-    "action": ["read", "update", "remove"],
-    "conditions": {
-      "access": { "$in": ["admin"] }
-    }
-  },
-  {
-    "type": "rest",
-    "subject": "/team-user",
-    "action": ["read", "create"],
-    "conditions": {
-      "access": { "$in": ["admin"] }
-    }
-  },
-  {
-    "type": "rest",
-    "subject": "/team-user/:id",
+    "subject": ["/team/:id", "/team-user/:id"],
     "action": ["read", "update", "remove"],
     "conditions": {
       "access": { "$in": ["admin"] }
