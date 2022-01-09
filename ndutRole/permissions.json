@@ -1,6 +1,11 @@
 [
   {
     "type": "rest",
+    "subject": "/mine",
+    "action": "read"
+  },
+  {
+    "type": "rest",
     "subject": ["/team", "/team-user"],
     "action": ["read", "create"],
     "conditions": {

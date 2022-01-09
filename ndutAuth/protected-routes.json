@@ -1,4 +1,5 @@
 {
+  "/mine": ["GET"],
   "/team": ["GET", "POST"],
   "/team/:id": ["GET", "PUT", "DELETE"],
   "/team-user": ["GET", "POST"],

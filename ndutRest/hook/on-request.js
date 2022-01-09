@@ -37,5 +37,5 @@ module.exports = async function (request, reply) {
   if (!ok) throw this.Boom.forbidden('Access denied')
   // TODO: what next to the ruleName ???
   // idea: filter by own records, by teamId, etc
-  request.team = team
+  request.role = team
 }
