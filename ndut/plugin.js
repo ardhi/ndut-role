@@ -7,15 +7,15 @@ const plugin = async function (scope, options) {
   const config = await getConfig()
   let allRules = []
 
-  const normalize = async (rule, alias) => {
+  const normalize = async (rule, prefix) => {
     const nc = await getNdutConfig(rule.type, true)
     if (_.isEmpty(nc)) return
     if (_.isArray(rule.subject)) {
       _.each(rule.subject, (s, i) => {
-        rule.subject[i] = `/${nc.prefix}${alias}${s}`
+        rule.subject[i] = `/${nc.prefix}${prefix}${s}`
       })
     } else {
-      rule.subject = `/${nc.prefix}${alias}${rule.subject}`
+      rule.subject = `/${nc.prefix}${prefix}${rule.subject}`
     }
     rule.name = makeRuleName(rule)
     return rule
@@ -27,7 +27,7 @@ const plugin = async function (scope, options) {
       let rules = await requireBase(n.dir + '/ndutRole/permissions', scope) || []
       for (const i in rules) {
         let r = rules[i]
-        rules[i] = await normalize(r, n.name === 'app' ? '' : ('/' + n.alias))
+        rules[i] = await normalize(r, n.prefix === '' ? '' : ('/' + n.prefix))
       }
       rules = _.without(rules, null, undefined)
       allRules = _.concat(allRules, rules)
