@@ -1,0 +1,4 @@
+{
+  "name": "ndut-role",
+  "dependency": ["ndut-db", "ndut-auth"]
+}

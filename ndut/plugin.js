@@ -1,14 +1,14 @@
 const { Ability } = require('@casl/ability')
 
-module.exports = async function (scope, options) {
-  const { _, aneka, getNdutConfig } = scope.ndut.helper
+const plugin = async function (scope, options) {
+  const { _, aneka, getNdutConfig, getConfig } = scope.ndut.helper
   const { requireBase } = aneka
   const { makeRuleName } = scope.ndutRole.helper
-  const { config } = scope
+  const config = await getConfig()
   let allRules = []
 
-  const normalize = (rule, alias) => {
-    const nc = getNdutConfig(rule.type, true)
+  const normalize = async (rule, alias) => {
+    const nc = await getNdutConfig(rule.type, true)
     if (_.isEmpty(nc)) return
     if (_.isArray(rule.subject)) {
       _.each(rule.subject, (s, i) => {
@@ -21,22 +21,18 @@ module.exports = async function (scope, options) {
     return rule
   }
 
-  for (const n of config.nduts) {
+  for (let n of config.nduts) {
+    n = await getNdutConfig(n)
     try {
       let rules = await requireBase(n.dir + '/ndutRole/permissions', scope) || []
-      rules = _.without(_.map(rules, r => {
-        return normalize(r, '/' + n.alias)
-      }), null, undefined)
+      for (const i in rules) {
+        let r = rules[i]
+        rules[i] = await normalize(r, n.name === 'app' ? '' : ('/' + n.alias))
+      }
+      rules = _.without(rules, null, undefined)
       allRules = _.concat(allRules, rules)
     } catch (err) {}
   }
-  try {
-    let rules = await requireBase(config.dir.base + '/ndutRole/permissions', scope) || []
-    rules = _.without(_.map(rules, r => {
-      return normalize(r, '')
-    }), null, undefined)
-    allRules = _.concat(allRules, rules)
-  } catch (err) {}
   scope.ndutRole.rules = allRules
   const accessToken = _(allRules)
     .map(r => {
@@ -57,4 +53,9 @@ module.exports = async function (scope, options) {
     return { model: 'RoleTeam', column: 'access', value: item, name: item }
   })
   await scope.ndutDb.model.DbLookup.create(lookups)
+}
+
+module.exports = async function () {
+  const { fp } = this.ndut.helper
+  return fp(plugin)
 }
