@@ -1,6 +1,6 @@
 {
   "name": "ndut-role",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Role & Permission for Ndut Framework",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ardhi/ndut-role#readme",
   "dependencies": {
-    "@casl/ability": "^5.4.3"
+    "@casl/ability": "^5.4.3",
+    "tree-model": "^1.0.7"
   }
 }

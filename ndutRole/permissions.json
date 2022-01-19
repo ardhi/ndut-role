@@ -8,16 +8,12 @@
     "type": "rest",
     "subject": ["/team", "/team-user"],
     "action": ["read", "create"],
-    "conditions": {
-      "access": { "$in": ["admin"] }
-    }
+    "access": "admin"
   },
   {
     "type": "rest",
     "subject": ["/team/:id", "/team-user/:id"],
     "action": ["read", "update", "remove"],
-    "conditions": {
-      "access": { "$in": ["admin"] }
-    }
+    "access": "admin"
   }
 ]
