@@ -12,7 +12,7 @@ module.exports = async function (request, reply) {
   const { _ } = this.ndut.helper
   const { makeRuleName } = this.ndutRole.helper
   if (!request.user) return
-  if (!request.protectedRoute) return
+  if (!request.protected.rest) return
   const team = await this.ndutRole.helper.getAccessByUser(request.user.id)
   const ability = new Ability(this.ndutRole.rules)
   const methods = _.isString(request.routerMethod) ? [request.routerMethod] : request.routerMethod
