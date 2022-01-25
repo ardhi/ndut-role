@@ -13,7 +13,7 @@
     "createdAt": true,
     "updatedAt": true,
     "deletedAt": true,
-    "siteId": true,
+    "ndutSiteSiteId": true,
     "status": true
   },
   "override": {
