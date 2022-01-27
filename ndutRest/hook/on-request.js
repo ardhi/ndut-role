@@ -35,7 +35,7 @@ module.exports = async function (request, reply) {
   const { accessLevel } = this.ndutRole
   const rule = _.find(this.ndutRole.rules, { name: ruleName })
   // access level
-  if (rule && !rule.private && accessLevel.hasChildren()) {
+  if (rule && !rule.ndutAuthPrivate && accessLevel.hasChildren()) {
     const accesses = _.isString(rule.access) ? [ rule.access ] : rule.access
     let all = []
     const omitted = [null, undefined, '']
