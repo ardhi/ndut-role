@@ -1,0 +1,16 @@
+[
+  {
+    "path": "/mine",
+    "method": "read"
+  },
+  {
+    "path": ["/team", "/team-user"],
+    "method": ["read", "create"],
+    "access": "admin"
+  },
+  {
+    "path": ["/team/:id", "/team-user/:id"],
+    "method": ["read", "update", "remove"],
+    "access": "admin"
+  }
+]

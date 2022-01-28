@@ -1,0 +1,7 @@
+{
+  "GET": "read",
+  "POST": "create",
+  "PUT": "update",
+  "PATCH": "update",
+  "DELETE": "remove"
+}

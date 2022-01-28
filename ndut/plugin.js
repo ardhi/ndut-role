@@ -3,7 +3,12 @@ const buildAccess = require('../lib/build-access')
 const buildAccessLevel = require('../lib/build-access-level')
 
 const plugin = async function (scope, options) {
-  await buildPermission.call(scope)
+  const { getNdutConfig } = scope.ndut.helper
+  for (const m of ['route', 'rest', 'static']) {
+    const cfg = getNdutConfig(m)
+    if (!cfg) continue
+    await buildPermission.call(scope, m)
+  }
   await buildAccess.call(scope)
   await buildAccessLevel.call(scope)
 }

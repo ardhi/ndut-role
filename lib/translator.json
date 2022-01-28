@@ -1,0 +1,11 @@
+{
+  "gt": "$gt",
+  "gte": "$gte",
+  "lt": "$lt",
+  "lte": "$lte",
+  "eq": "$eq",
+  "neq": "$ne",
+  "inq": "$in",
+  "nin": "$nin",
+  "regex": "$regex"
+}
