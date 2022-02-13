@@ -1,6 +1,6 @@
 {
   "name": "ndut-role",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Role & Permission for Ndut Framework",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
