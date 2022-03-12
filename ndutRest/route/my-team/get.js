@@ -5,7 +5,7 @@ module.exports = {
   },
   handler: async function (request, reply) {
     return {
-      data: request.role
+      data: request.team
     }
   }
 }

@@ -1,6 +1,6 @@
 [
   {
-    "path": "/mine",
+    "path": "/my-team",
     "method": "read"
   },
   {
