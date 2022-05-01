@@ -3,14 +3,24 @@
     "teamId": {
       "type": "Number",
       "required": true,
-      "scale": 0,
-      "index": true
+      "scale": 0
     },
     "userId": {
       "type": "Number",
       "required": true,
-      "scale": 0,
-      "index": true
+      "scale": 0
+    }
+  },
+  "indexes": {
+    "roleteamuser_uniq": {
+      "keys": {
+        "teamId": 1,
+        "userId": 1,
+        "siteId": 1
+      },
+      "options": {
+        "unique": true
+      }
     }
   },
   "feature": {

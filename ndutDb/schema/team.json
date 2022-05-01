@@ -16,6 +16,17 @@
     "ndutSiteSiteId": true,
     "status": true
   },
+  "indexes": {
+    "roleteam_uniq": {
+      "keys": {
+        "name": 1,
+        "siteId": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
   "override": {
     "schema": true,
     "builtinFixture": true
