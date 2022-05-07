@@ -1,14 +1,9 @@
 {
   "properties": {
     "teamId": {
-      "type": "Number",
+      "type": "String",
       "required": true,
-      "scale": 0
-    },
-    "userId": {
-      "type": "Number",
-      "required": true,
-      "scale": 0
+      "length": 20
     }
   },
   "indexes": {
@@ -23,10 +18,5 @@
       }
     }
   },
-  "feature": {
-    "createdAt": true,
-    "updatedAt": true,
-    "deletedAt": true,
-    "ndutSiteSiteId": true
-  }
+  "feature": ["createdAt", "updatedAt", "deletedAt", "ndutAuthUserId", "ndutSiteSiteId"]
 }

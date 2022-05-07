@@ -1,5 +1,5 @@
 [{
-  "teamId": 1,
-  "userId": 1,
-  "siteId": 1
+  "teamId": "ADMINS",
+  "userId": "ADMIN",
+  "siteId": "DEFAULT"
 }]

@@ -1,3 +1,9 @@
 [
-  { "id": 1, "name": "Administrators", "access": ["admin"], "siteId": 1, "status": "ENABLED" }
+  {
+    "id": "ADMINS",
+    "name": "Administrators",
+    "access": ["admin"],
+    "siteId": "DEFAULT",
+    "status": "ENABLED"
+  }
 ]
